@@ -8,5 +8,6 @@ export default defineConfig({
   },
   preview: {
     open: true            // Также открывать при preview-режиме
-  }
-})
+  },
+  base: './',
+});

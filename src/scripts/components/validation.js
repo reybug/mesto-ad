@@ -16,16 +16,19 @@ const hideInputError = (formElement, inputElement, settings) => {
 
 // Проверки валидности поля
 const checkInputValidity = (formElement, inputElement, settings) => {
-    if (!inputElement.validity.valueMissing) {
+    if (!inputElement.validity.valid) {
+
+        if (inputElement.validity.valueMissing) {
         showInputError(formElement, inputElement, 'Это поле обязательно для заполнения', settings);
-        if (inputElement.validity.patternMismatch) {
-            const customMessage = inputElement.getAttribute('data-error-message');
-            showInputError(formElement, inputElement, customMessage, settings);
-        } else if (inputElement.type === 'url' && inputElement.validity.typeMismatch) {
-            showInputError(formElement, inputElement, 'Введите корректный URL', settings);
-        } else {
-            showInputError(formElement, inputElement, inputElement.validationMessage, settings);
-        }
+      } else if (inputElement.validity.patternMismatch) {
+        const customMessage = inputElement.getAttribute('data-error-message');
+        showInputError(formElement, inputElement, customMessage, settings);
+      } else if (inputElement.type === 'url' && inputElement.validity.typeMismatch) {
+        showInputError(formElement, inputElement, 'Введите корректный URL', settings);
+      } else {
+        showInputError(formElement, inputElement, inputElement.validationMessage, settings);
+      }
+      
     } else {
     hideInputError(formElement, inputElement, settings);
   }
