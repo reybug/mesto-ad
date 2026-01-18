@@ -67,6 +67,7 @@ const handlePreviewPicture = ({ name, link }) => {
 
 const handleProfileFormSubmit = (evt) => {
   evt.preventDefault();
+
   if (profileForm.checkValidity()) {
   const submitButton = profileForm.querySelector('.popup__button');
   const startText = submitButton.textContent;
@@ -82,7 +83,7 @@ const handleProfileFormSubmit = (evt) => {
       closeModalWindow(profileFormModalWindow);
     })
     .catch((err) => {
-      console.log(err);
+      console.log("Ошибка при изменении профиля:", err);
     })
     .finally(() => {
       submitButton.textContent = startText;
@@ -92,6 +93,7 @@ const handleProfileFormSubmit = (evt) => {
 
 const handleAvatarFromSubmit = (evt) => {
   evt.preventDefault();
+
   if (avatarForm.checkValidity()) {
     const submitButton = avatarForm.querySelector('.popup__button');
     const startText = submitButton.textContent;
@@ -103,7 +105,7 @@ const handleAvatarFromSubmit = (evt) => {
         closeModalWindow(avatarFormModalWindow);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Ошибка при изменении аватарки:", err);
       })
       .finally(() => {
         submitButton.textContent = startText;
@@ -113,6 +115,7 @@ const handleAvatarFromSubmit = (evt) => {
 
 const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
+
   if (cardForm.checkValidity()) {
     const submitButton = cardForm.querySelector('.popup__button');
     const startText = submitButton.textContent;
@@ -134,7 +137,7 @@ const handleCardFormSubmit = (evt) => {
         closeModalWindow(cardFormModalWindow);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Ошибка при создании карточки:", err);
       })
       .finally(() => {
         submitButton.textContent = startText;
@@ -276,7 +279,7 @@ const handleLogoClick = () => {
       openModalWindow(cardInfoModalWindow);
     })
     .catch((err) => {
-      console.log(err);
+      console.log("Ошибка при выводе статистики:", err);
     });
 };
 
@@ -335,5 +338,5 @@ Promise.all([getCardList(), getUserInfo()])
     );
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Ошибка при загрузке данных с сервера:", err);
   });
